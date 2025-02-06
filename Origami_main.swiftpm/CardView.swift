@@ -1,11 +1,10 @@
-// CardView.swift
 import SwiftUI
 
 struct CardView: View {
     var imageName: String
     var title: String
     var description: String
-    var steps: [String] // Steps for the origami
+    var steps: [(imageName: String, description: String)] // Updated to include step images
     
     var body: some View {
         NavigationLink(destination: OrigamiDetailView(origamiName: title, steps: steps)) {
@@ -25,9 +24,7 @@ struct CardView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        // Action for Learn button
-                    }) {
+                    Button(action: {}) {
                         Text("Explore")
                             .font(.headline)
                             .foregroundColor(.white)

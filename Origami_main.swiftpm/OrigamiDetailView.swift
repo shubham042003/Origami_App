@@ -2,14 +2,15 @@ import SwiftUI
 
 struct OrigamiDetailView: View {
     var origamiName: String
-    var steps: [String] // Array of steps for the origami
+    var steps: [(imageName: String, description: String)] // Now each step has an image
+    @EnvironmentObject var tracker: LearningTracker
 
-    @State private var isCompleted = false // Track button state
+    @State private var isCompleted = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             
-            // Large title aligned to the left below the back button
+            // Large title aligned left below back button
             Text(origamiName)
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -21,7 +22,7 @@ struct OrigamiDetailView: View {
                 .foregroundColor(.gray)
                 .padding(.leading, 16)
             
-            // Total number of steps
+            // Total steps count
             Text("Total steps: \(steps.count)")
                 .font(.headline)
                 .foregroundColor(.blue)
@@ -30,7 +31,11 @@ struct OrigamiDetailView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     ForEach(steps.indices, id: \.self) { index in
-                        StepCardView(stepNumber: index + 1, stepDescription: steps[index])
+                        StepCardView(
+                            stepNumber: index + 1,
+                            stepImage: steps[index].imageName,
+                            stepDescription: steps[index].description
+                        )
                     }
                 }
                 .padding(.top, 15)
@@ -45,30 +50,33 @@ struct OrigamiDetailView: View {
                     .foregroundColor(.gray)
                 
                 Button(action: {
-                    isCompleted.toggle()
-                }) {
-                    Text(isCompleted ? "Completed!" : "Yes")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(isCompleted ? Color.green : Color.blue)
-                        .cornerRadius(10)
-                }
-                .padding(.horizontal, 16)
+                                tracker.toggleCompletion(for: origamiName)
+                            }) {
+                                Text(tracker.isCompleted(origamiName) ? "Completed!" : "Yes")
+                                    .font(.title2)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(tracker.isCompleted(origamiName) ? Color.green : Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            .padding()
             }
+            .padding(.bottom, 5)
         }
-
-        .navigationBarBackButtonHidden(false) // Ensure back button is visible
+        .padding()
+        .navigationBarBackButtonHidden(false)
     }
 }
 
+
 struct StepCardView: View {
     var stepNumber: Int
+    var stepImage: String
     var stepDescription: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 10) {
             // Step number aligned left
             Text("Step \(stepNumber)")
                 .font(.title2)
@@ -77,14 +85,15 @@ struct StepCardView: View {
             
             // Card below step number with proper padding
             VStack {
-                Image("step\(stepNumber)") // Ensure images are named as "step1", "step2", etc.
+                Image(stepImage) // Uses the step-specific image
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 150)
+                    .frame(height: 200)
                     .cornerRadius(10)
                 
                 Text(stepDescription)
                     .font(.body)
+                    .lineLimit(2)
                     .foregroundColor(.black)
                     .padding()
             }
