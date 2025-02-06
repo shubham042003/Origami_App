@@ -20,7 +20,7 @@ struct CardView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.leading, 16)
-                        .lineLimit(3)
+                        .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     Spacer()

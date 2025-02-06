@@ -8,7 +8,7 @@ struct HomePageView: View {
         (imageName: "image1", title: "Boat", description: "A simple and classic paper boat, that can float.", steps: ["Step 1: Fold paper in half", "Step 2: Create a rectangle", "Step 3: Shape into a boat"]),
         (imageName: "image2", title: "Ninja Star", description: "A sharp star, perfect for playful target practice.", steps: ["Step 1: Fold paper in half", "Step 2: Fold the corners", "Step 3: Shape the wings"]),
         (imageName: "image3", title: "Frog", description: "A fun and interactive jumping frog.", steps: ["Step 1: Fold paper diagonally", "Step 2: Create the legs", "Step 3: Make the jumping fold"]),
-        (imageName: "image4", title: "Crane", description: "A classic origami model representing peace and good fortune.", steps: ["Step 1: Fold paper in half", "Step 2: Create a triangle", "Step 3: Fold edges"]),
+        (imageName: "image4", title: "Crane", description: "A classic model representing peace and good fortune.", steps: ["Step 1: Fold paper in half", "Step 2: Create a triangle", "Step 3: Fold edges"]),
     ]
     
     var filteredCards: [(imageName: String, title: String, description: String, steps: [String])] {
