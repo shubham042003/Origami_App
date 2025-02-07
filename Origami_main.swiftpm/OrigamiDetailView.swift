@@ -8,7 +8,7 @@ struct OrigamiDetailView: View {
     @State private var isCompleted = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 3) {
             
             // Large title aligned left below back button
             Text(origamiName)
@@ -44,31 +44,29 @@ struct OrigamiDetailView: View {
             Spacer()
             
             // Completion section
-            VStack {
+            VStack(spacing: 5) { // Reduced spacing here
                 Text("Click if completed tutorial")
                     .font(.headline)
                     .foregroundColor(.gray)
                 
                 Button(action: {
-                                tracker.toggleCompletion(for: origamiName)
-                            }) {
-                                Text(tracker.isCompleted(origamiName) ? "Completed!" : "Yes")
-                                    .font(.title2)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(tracker.isCompleted(origamiName) ? Color.green : Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                            .padding()
+                    tracker.toggleCompletion(for: origamiName)
+                }) {
+                    Text(tracker.isCompleted(origamiName) ? "Completed!" : "Yes")
+                        .font(.title3)
+                        .padding(.vertical, 8) // Reduced button height
+                        .frame(maxWidth: .infinity)
+                        .background(tracker.isCompleted(origamiName) ? Color.green : Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                }
+                .padding(.horizontal)
             }
-            .padding(.bottom, 5)
         }
         .padding()
         .navigationBarBackButtonHidden(false)
     }
 }
-
 
 struct StepCardView: View {
     var stepNumber: Int
