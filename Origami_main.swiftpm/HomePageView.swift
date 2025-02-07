@@ -7,19 +7,39 @@ struct HomePageView: View {
     
     let origamiCards = [
         (imageName: "image1", title: "Boat", description: "A simple and classic paper boat, that can float.",
-         steps: [("image1", "Step 1: Fold paper in half"),
-                 ("image1", "Step 2: Create a rectangle"),
-                 ("image1", "Step 3: Shape into a boat")]),
+         steps: [("Boat1", "Fold the paper in half."),
+                 ("Boat2", "Fold in half again."),
+                 ("Boat3", "Fold in corners."),
+                 ("Boat4", "Fold up edges on both sides."),
+                 ("Boat5", "Pull the sides out and flatten."),
+                 ("Boat6", "Fold front and back layers up."),
+                 ("Boat7", "Pull the sides apart and flatten."),
+                 ("Boat8", "Pull top flaps outwards."),
+                 ("Boat9", "Squish the bottom and pull the sides up."),
+                 ("Boat10", "Hurray! The boat is ready.")]),
 
+        
         (imageName: "image2", title: "Ninja Star", description: "A sharp star, perfect for playful target practice.",
-         steps: [("image2", "Step 1: Fold paper in half"),
-                 ("image2", "Step 2: Fold the corners"),
-                 ("image2", "Step 3: Shape the wings")]),
+         steps: [("Star1", "You will need 2 pieces of square paper."),
+                 ("Star2", "Fold the top of the paper down on both sections. Then do it again."),
+                 ("Star3", "Fold both of them in half horizontally, and unfold."),
+                 ("Star4", "For the left piece, fold the left side up, aligning it with the fold you made in the previous step. For the right piece, fold the left side down."),
+                 ("Star5", "Follow the photos."),
+                 ("Star6", "Flip them over."),
+                 ("Star7", "Fold the corners like so."),
+                 ("Star8", "Orient the papers like in the photos."),
+                 ("Star9", "Tuck in the uppermost flap into the one on the right."),
+                 ("Star10", "Tuck the bottom flap into the left one."),
+                 ("Star11", "Flip over."),
+                 ("Star12", "Tuck in the right flap into the space between the upper and lower flaps. Then do the same with the left flap."),
+                 ("Star13", "You are done!")]),
+        
 
         (imageName: "image3", title: "Frog", description: "A fun and interactive jumping frog.",
          steps: [("image3", "Step 1: Fold paper diagonally"),
                  ("image3", "Step 2: Create the legs"),
                  ("image3", "Step 3: Make the jumping fold")]),
+        
 
         (imageName: "image4", title: "Crane", description: "A classic model representing peace and good fortune.",
          steps: [("image4", "Step 1: Fold paper in half"),

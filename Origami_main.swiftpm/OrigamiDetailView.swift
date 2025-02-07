@@ -93,7 +93,7 @@ struct StepCardView: View {
                 
                 Text(stepDescription)
                     .font(.body)
-                    .lineLimit(2)
+                    .lineLimit(5)
                     .foregroundColor(.black)
                     .padding()
             }
