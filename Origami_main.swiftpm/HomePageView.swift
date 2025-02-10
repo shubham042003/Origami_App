@@ -22,29 +22,30 @@ struct HomePageView: View {
         (imageName: "image2", title: "Ninja Star", description: "A sharp star, perfect for playful target practice.",
          steps: [("Star1", "You will need 2 pieces of square paper."),
                  ("Star2", "Fold the top of the paper down on both sections. Then do it again."),
-                 ("Star3", "Fold both of them in half horizontally, and unfold."),
-                 ("Star4", "For the left piece, fold the left side up, aligning it with the fold you made in the previous step. For the right piece, fold the left side down."),
-                 ("Star5", "Follow the photos."),
-                 ("Star6", "Flip them over."),
-                 ("Star7", "Fold the corners like so."),
-                 ("Star8", "Orient the papers like in the photos."),
-                 ("Star9", "Tuck in the uppermost flap into the one on the right."),
-                 ("Star10", "Tuck the bottom flap into the left one."),
-                 ("Star11", "Flip over."),
-                 ("Star12", "Tuck in the right flap into the space between the upper and lower flaps. Then do the same with the left flap."),
-                 ("Star13", "You are done!")]),
+                 ("Star3", "Fold both of them in half horizontally, and unfold.")
+//                 ("Star4", "For the left piece, fold the left side up, aligning it with the fold you made in the previous step. For the right piece, fold the left side down."),
+//                 ("Star5", "Follow the photos."),
+//                 ("Star6", "Flip them over."),
+//                 ("Star7", "Fold the corners like so."),
+//                 ("Star8", "Orient the papers like in the photos."),
+//                 ("Star9", "Tuck in the uppermost flap into the one on the right."),
+//                 ("Star10", "Tuck the bottom flap into the left one."),
+//                 ("Star11", "Flip over."),
+//                 ("Star12", "Tuck in the right flap into the space between the upper and lower flaps. Then do the same with the left flap."),
+//                 ("Star13", "You are done!")
+                ]),
         
 
         (imageName: "image3", title: "Frog", description: "A fun and interactive jumping frog.",
-         steps: [("image3", "Step 1: Fold paper diagonally"),
-                 ("image3", "Step 2: Create the legs"),
-                 ("image3", "Step 3: Make the jumping fold")]),
+         steps: [("", "Step 1: Fold paper diagonally"),
+                 ("", "Step 2: Create the legs"),
+                 ("", "Step 3: Make the jumping fold")]),
         
 
         (imageName: "image4", title: "Crane", description: "A classic model representing peace and good fortune.",
-         steps: [("image4", "Step 1: Fold paper in half"),
-                 ("image4", "Step 2: Create a triangle"),
-                 ("image4", "Step 3: Fold edges")])
+         steps: [("", "Step 1: Fold paper in half"),
+                 ("", "Step 2: Create a triangle"),
+                 ("", "Step 3: Fold edges")])
     ]
 
     
