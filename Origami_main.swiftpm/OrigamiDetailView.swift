@@ -2,6 +2,7 @@ import SwiftUI
 
 struct OrigamiDetailView: View {
     var origamiName: String
+    var imageName: String 
     var steps: [(imageName: String, description: String)] // Now each step has an image
     @EnvironmentObject var tracker: LearningTracker
 
@@ -50,7 +51,7 @@ struct OrigamiDetailView: View {
                     .foregroundColor(.gray)
                 
                 Button(action: {
-                    tracker.toggleCompletion(for: origamiName)
+                    tracker.toggleCompletion(for: origamiName,imageName: imageName)
                 }) {
                     Text(tracker.isCompleted(origamiName) ? "Completed!" : "Yes")
                         .font(.title3)

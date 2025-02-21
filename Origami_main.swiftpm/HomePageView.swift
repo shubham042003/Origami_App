@@ -22,17 +22,17 @@ struct HomePageView: View {
         (imageName: "image2", title: "Ninja Star", description: "A sharp star, perfect for playful target practice.",
          steps: [("Star1", "You will need 2 pieces of square paper."),
                  ("Star2", "Fold the top of the paper down on both sections. Then do it again."),
-                 ("Star3", "Fold both of them in half horizontally, and unfold.")
-//                 ("Star4", "For the left piece, fold the left side up, aligning it with the fold you made in the previous step. For the right piece, fold the left side down."),
-//                 ("Star5", "Follow the photos."),
-//                 ("Star6", "Flip them over."),
-//                 ("Star7", "Fold the corners like so."),
-//                 ("Star8", "Orient the papers like in the photos."),
-//                 ("Star9", "Tuck in the uppermost flap into the one on the right."),
-//                 ("Star10", "Tuck the bottom flap into the left one."),
-//                 ("Star11", "Flip over."),
-//                 ("Star12", "Tuck in the right flap into the space between the upper and lower flaps. Then do the same with the left flap."),
-//                 ("Star13", "You are done!")
+                 ("Star3", "Fold both of them in half horizontally, and unfold."),
+                 ("Star4", "For the left piece, fold the left side up, aligning it with the fold you made in the previous step. For the right piece, fold the left side down."),
+                 ("Star5", "Follow the photos."),
+                 ("Star6", "Flip them over."),
+                 ("Star7", "Fold the corners like so."),
+                 ("Star8", "Orient the papers like in the photos."),
+                 ("Star9", "Tuck in the uppermost flap into the one on the right."),
+                 ("Star10", "Tuck the bottom flap into the left one."),
+                 ("Star11", "Flip over."),
+                 ("Star12", "Tuck in the right flap into the space between the upper and lower flaps. Then do the same with the left flap."),
+                 ("Star13", "You are done!")
                 ]),
         
 
@@ -99,18 +99,12 @@ struct HomePageView: View {
                     ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredCards, id: \.title) { card in
-                                NavigationLink(destination: OrigamiDetailView(
-                                    origamiName: card.title,
+                                CardView(
+                                    imageName: card.imageName, // ✅ Pass correct origami image
+                                    title: card.title,
+                                    description: card.description,
                                     steps: card.steps
-                                )) {
-                                    CardView(
-                                        imageName: card.imageName,
-                                        title: card.title,
-                                        description: card.description,
-                                        steps: card.steps
-                                    )
-                                }
-                                .buttonStyle(PlainButtonStyle()) // Removes default button styling
+                                )
                             }
                         }
                         .padding(.top, 10) // Added space from the top

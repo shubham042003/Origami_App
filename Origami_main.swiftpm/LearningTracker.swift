@@ -1,23 +1,32 @@
 import SwiftUI
 
+// ObservableObject to track completed tutorials with timestamps and images
 class LearningTracker: ObservableObject {
-    @Published var completedTutorials: [String] = []
+    @Published var completedTutorials: [(name: String, date: Date, imageName: String)] = []
     
-    func toggleCompletion(for tutorial: String) {
-        if completedTutorials.contains(tutorial) {
-            completedTutorials.removeAll { $0 == tutorial } // Remove if already completed
+    func toggleCompletion(for tutorial: String, imageName: String) {
+        if let index = completedTutorials.firstIndex(where: { $0.name == tutorial }) {
+            completedTutorials.remove(at: index) // Remove if already completed
         } else {
-            completedTutorials.append(tutorial) // Add if not completed
+            completedTutorials.append((name: tutorial, date: Date(), imageName: imageName)) // Add with timestamp
         }
     }
     
     func isCompleted(_ tutorial: String) -> Bool {
-        return completedTutorials.contains(tutorial)
+        return completedTutorials.contains { $0.name == tutorial }
     }
 }
 
+// View for tracking completed tutorials
 struct TrackLearningView: View {
     @EnvironmentObject var tracker: LearningTracker
+    private let dateFormatter: DateFormatter
+    
+    init() {
+        dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+    }
 
     var body: some View {
         VStack {
@@ -32,20 +41,38 @@ struct TrackLearningView: View {
                     .padding()
             } else {
                 List {
-                    ForEach(tracker.completedTutorials, id: \.self) { tutorial in
+                    ForEach(tracker.completedTutorials, id: \.name) { tutorial in
                         HStack {
-                            Text(tutorial)
-                                .font(.title2)
+                            Image(tutorial.imageName)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            VStack(alignment: .leading) {
+                                Text(tutorial.name)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                
+                                Text(dateFormatter.string(from: tutorial.date))
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
                             
                             Spacer()
                             
+                            // Trash Button - Only this should remove the tutorial
                             Button(action: {
-                                tracker.toggleCompletion(for: tutorial)
+                                withAnimation {
+                                    tracker.toggleCompletion(for: tutorial.name, imageName: tutorial.imageName)
+                                }
                             }) {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
                             }
+                            .buttonStyle(BorderlessButtonStyle()) // Prevents list row selection effect
                         }
+                        .padding(.vertical, 5)
                     }
                 }
             }
