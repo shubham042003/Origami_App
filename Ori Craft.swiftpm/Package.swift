@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Origami",
+    name: "Ori Craft",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "Origami",
+            name: "Ori Craft",
             targets: ["AppModule"],
             bundleIdentifier: "com.example.Origami",
             displayVersion: "1.0",
