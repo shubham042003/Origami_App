@@ -1,14 +1,13 @@
 import SwiftUI
 
-// ObservableObject to track completed tutorials with timestamps and images
 class LearningTracker: ObservableObject {
     @Published var completedTutorials: [(name: String, date: Date, imageName: String)] = []
     
     func toggleCompletion(for tutorial: String, imageName: String) {
         if let index = completedTutorials.firstIndex(where: { $0.name == tutorial }) {
-            completedTutorials.remove(at: index) // Remove if already completed
+            completedTutorials.remove(at: index) 
         } else {
-            completedTutorials.append((name: tutorial, date: Date(), imageName: imageName)) // Add with timestamp
+            completedTutorials.append((name: tutorial, date: Date(), imageName: imageName))
         }
     }
     
@@ -61,7 +60,6 @@ struct TrackLearningView: View {
                             
                             Spacer()
                             
-                            // Trash Button - Only this should remove the tutorial
                             Button(action: {
                                 withAnimation {
                                     tracker.toggleCompletion(for: tutorial.name, imageName: tutorial.imageName)
@@ -70,8 +68,8 @@ struct TrackLearningView: View {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
                             }
-                            .buttonStyle(BorderlessButtonStyle()) // Prevents list row selection effect
-                        }
+                            .buttonStyle(BorderlessButtonStyle()) 
+                    }
                         .padding(.vertical, 5)
                     }
                 }

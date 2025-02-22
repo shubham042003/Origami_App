@@ -11,19 +11,16 @@ struct OrigamiDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             
-            // Large title aligned left below back button
             Text(origamiName)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.leading, 16)
             
-            // Subtitle for steps
             Text("Follow the steps below")
                 .font(.title2)
                 .foregroundColor(.gray)
                 .padding(.leading, 16)
             
-            // Total steps count
             Text("Total steps: \(steps.count)")
                 .font(.headline)
                 .foregroundColor(.blue)
@@ -45,7 +42,7 @@ struct OrigamiDetailView: View {
             Spacer()
             
             // Completion section
-            VStack(spacing: 5) { // Reduced spacing here
+            VStack(spacing: 5) {
                 Text("Click if completed tutorial")
                     .font(.headline)
                     .foregroundColor(.gray)
@@ -55,7 +52,7 @@ struct OrigamiDetailView: View {
                 }) {
                     Text(tracker.isCompleted(origamiName) ? "Completed!" : "Yes")
                         .font(.title3)
-                        .padding(.vertical, 8) // Reduced button height
+                        .padding(.vertical, 8) 
                         .frame(maxWidth: .infinity)
                         .background(tracker.isCompleted(origamiName) ? Color.green : Color.blue)
                         .foregroundColor(.white)
@@ -84,7 +81,7 @@ struct StepCardView: View {
             
             // Card below step number with proper padding
             VStack {
-                Image(stepImage) // Uses the step-specific image
+                Image(stepImage)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
@@ -100,7 +97,7 @@ struct StepCardView: View {
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 3)
-            .padding(.horizontal, 16) // Step card also starts from 16 on both sides
+            .padding(.horizontal, 16)
         }
         .padding(.bottom, 10)
     }

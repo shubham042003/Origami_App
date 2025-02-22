@@ -100,14 +100,14 @@ struct HomePageView: View {
                         VStack(spacing: 15) {
                             ForEach(filteredCards, id: \.title) { card in
                                 CardView(
-                                    imageName: card.imageName, // ✅ Pass correct origami image
+                                    imageName: card.imageName, 
                                     title: card.title,
                                     description: card.description,
                                     steps: card.steps
                                 )
                             }
                         }
-                        .padding(.top, 10) // Added space from the top
+                        .padding(.top, 10)
                         .padding(.bottom, 10)
                     }
                     

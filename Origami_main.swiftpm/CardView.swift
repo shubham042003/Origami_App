@@ -25,7 +25,7 @@ struct CardView: View {
 
                 NavigationLink(destination: OrigamiDetailView(
                     origamiName: title,
-                    imageName: imageName, // ✅ Pass image to detail view
+                    imageName: imageName, 
                     steps: steps
                 )) {
                     Text("Explore")
